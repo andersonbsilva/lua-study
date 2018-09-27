@@ -1,3 +1,8 @@
+/*
+ Example: 
+   It is a C program that executes an lua script that call a function
+   defined in C. 
+*/
 #include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
@@ -10,6 +15,7 @@ int main()
 	luaL_openlibs(L);
 
 	lua_pushcfunction(L, myadd);
+	/* export to lua function 'myadd' as 'add' */
 	lua_setglobal(L, "add");
 
 	luaL_dofile(L, "test.lua");
